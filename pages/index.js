@@ -1,7 +1,7 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Banner from '../components/Banner.js';
-
+import Image from 'next/image'
 
 export default function Home() {
 
@@ -11,12 +11,24 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
+
       <Head>
         <title>Manga Discover</title>
       </Head>
 
       <main className={styles.main}>
-        <Banner buttonText="View stores nearby" handleOnClick={handleOnButtonClick}/>
+
+        <Banner 
+        buttonText="View stores nearby" 
+        handleOnClick={handleOnButtonClick}
+        />
+
+        <Image 
+        src="/static/images/hero-image.png"
+        width={700}
+        height={400}
+        />
+        
       </main>
     </div>
   )
