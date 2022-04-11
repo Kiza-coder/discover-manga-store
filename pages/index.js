@@ -1,7 +1,8 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Banner from '../components/Banner.js';
-import Image from 'next/image'
+import Image from 'next/image';
+import Card from '../components/Card.js';
 
 export default function Home() {
 
@@ -28,6 +29,8 @@ export default function Home() {
         width={700}
         height={400}
         />
+
+        <Card name="Dark Manga Store" href="/" imgUrl="/static/images/hero-image.png" />
         
       </main>
     </div>
