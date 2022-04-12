@@ -16,9 +16,24 @@ a {
   box-sizing: border-box;
 }
 
+.glass {
+  background: hsla(0, 0%, 100%, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid hsla(0,0%,100%,0.2);
+}
+
+.glass:hover {
+  background: hsla(0, 0%, 100%, 0.2);
+  border: 1px solid #fff  ;
+
+}
+
 :root {
-  --text-purple: rgba(67,56,202,1);
-  --text-purple-dark: rgba(79,70,229,1);
-  --text-black: rgba(17,24,39,1);
-  --text-white-100: rgba(229,231,235,1);
-};
+  --text-purple: rgba(67, 56, 202, 1);
+  --text-purple-dark: rgba(79, 70, 229, 1);
+  --text-black: rgba(17, 24, 39, 1);
+  --text-white-100: rgba(229, 231, 235, 1);
+}
