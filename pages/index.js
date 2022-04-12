@@ -7,7 +7,14 @@ import Card from '../components/Card.js';
 import mangasStores from '../data/manga-store.json';
 
 
-export default function Home() {
+export async function getStaticProps(context) {
+  return {
+    props: { mangasStores }
+  }
+}
+
+
+export default function Home(props) {
 
   const handleOnButtonClick = (event) => {
     console.log(event)
@@ -35,13 +42,14 @@ export default function Home() {
           />
         </div>
         <div className={styles.cardLayout}>
-          { mangasStores.map(mangaStore => {
+          { props.mangasStores.map(mangaStore => {
             return (
               <Card 
               name= {mangaStore.name}
-              href="/" 
-              imgUrl="/static/images/hero-image.png"
+              href= {`/manga-store/${mangaStore.id}`} 
+              imgUrl={mangaStore.imgUrl}
               className= {styles.card}
+              key={mangaStore.id}
               />
               );
             })

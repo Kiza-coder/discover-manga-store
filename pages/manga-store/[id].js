@@ -9,7 +9,7 @@ const MangaStore = () => {
         <Link href="/">
             <a>Back to home</a>
         </Link>        
-        <Link href="/coffe-store">
+        <Link href="/manga-store">
             <a>Go to dynamic page</a>
         </Link> 
     </div>
