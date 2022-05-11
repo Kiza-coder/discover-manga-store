@@ -4,15 +4,14 @@ import Banner from '../components/Banner.js';
 import Image from 'next/image';
 import Card from '../components/Card.js';
 
-import mangasStores from '../data/manga-store.json';
+import mangasStoresData from '../data/manga-store.json';
 
 
 export async function getStaticProps(context) {
   return {
-    props: { mangasStores }
+    props: { mangasStores: mangasStoresData }
   }
 }
-
 
 export default function Home(props) {
 
@@ -41,21 +40,26 @@ export default function Home(props) {
             height={400}
           />
         </div>
-        <div className={styles.cardLayout}>
-          { props.mangasStores.map(mangaStore => {
-            return (
-              <Card 
-              name= {mangaStore.name}
-              href= {`/manga-store/${mangaStore.id}`} 
-              imgUrl={mangaStore.imgUrl}
-              className= {styles.card}
-              key={mangaStore.id}
-              />
-              );
-            })
-          }
-        </div>
-        
+
+        {props.mangasStores.length > 0 && (
+			<>
+				<h2 className={styles.heading2}>Los Angeles Stores</h2>
+				<div className={styles.cardLayout}>
+				{ props.mangasStores.map(mangaStore => {
+					return (
+						<Card 
+							name= {mangaStore.name}
+							href= {`/manga-store/${mangaStore.id}`} 
+							imgUrl={mangaStore.imgUrl}
+							className= {styles.card}
+							key={mangaStore.id}
+						/>
+						);
+					})
+				}	
+				</div>
+			</>
+		)}   
       </main>
     </div>
   )
