@@ -32,7 +32,7 @@ export function getStaticPaths() {
     }
 }
 
-const MangaStore = ({ mangaStore}) => {
+const MangaStore = ({ mangaStore }) => {
     const router = useRouter();
     const {id, name, imgUrl, address} = mangaStore; 
 
@@ -46,17 +46,22 @@ const MangaStore = ({ mangaStore}) => {
             <title>{name}</title>
         </Head>
         Manga Store :  {router.query.id}
-        <div className={styles.col1}>
-            <Link href="/">
-                <a>Back to home</a>
-            </Link> 
-            <p>{name}</p>
-            <Image src={imgUrl} width={600} height={360} className={styles.storeImg} alt={name}/>
-        </div>
-        <div className={styles.col2}>     
-            <p>{imgUrl}</p>              
-            <p>{address}</p>   
-        </div>      
+        <div className={styles.container}>
+            <div className={styles.col1}>
+                <div className={styles.backToHomeLink}> </div>
+                <Link href="/">
+                    <a>Back to home</a>
+                </Link> 
+                <div className={styles.nameWrapper}>
+                    <h1 className={styles.name}>{name}</h1>
+                </div>
+                <Image src={imgUrl} width={600} height={360} className={styles.storeImg} alt={name}/>
+            </div>
+            <div className={cls("glass",styles.col2)}>     
+                <p>{imgUrl}</p>              
+                <p>{address}</p>   
+            </div> 
+        </div>     
     </div>);   
 };
 
