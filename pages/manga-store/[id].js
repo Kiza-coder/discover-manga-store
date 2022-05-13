@@ -9,6 +9,8 @@ import cls from "classnames";
 
 export function getStaticProps(staticProps){
     const params =  staticProps.params;
+
+    
     
     return {
         props: {
@@ -17,6 +19,8 @@ export function getStaticProps(staticProps){
         })
     }}
 }
+
+
 
 export function getStaticPaths() {
     const paths = mangasStoresData.map(mangaStore => {

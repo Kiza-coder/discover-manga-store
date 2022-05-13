@@ -3,21 +3,33 @@ import styles from '../styles/Home.module.css';
 import Banner from '../components/Banner.js';
 import Image from 'next/image';
 import Card from '../components/Card.js';
+import axios from 'axios';
 
 import mangasStoresData from '../data/manga-store.json';
 
 
 export async function getStaticProps(context) {
+
+  
+   
+
+
   return {
     props: { mangasStores: mangasStoresData }
   }
 }
+
+
+
+  
 
 export default function Home(props) {
 
   const handleOnButtonClick = (event) => {
     console.log(event)
   };
+
+ 
 
   return (
     <div className={styles.container}>
