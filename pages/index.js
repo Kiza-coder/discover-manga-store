@@ -7,7 +7,34 @@ import Card from '../components/Card.js';
 import mangasStoresData from '../data/manga-store.json';
 
 
+
+
+
+
+
+
+
+
+  
+
+
 export async function getStaticProps(context) {
+
+  var url = 'https://api.foursquare.com/v3/places/nearby?ll=41.8781,-87.6298&v=20221705';
+const response = await fetch(url,
+  {
+    headers: {
+      'Authorization': 'fsq3ZyXQSZtW1K2RLZinfP5+vzDtOqxvgkrMuCJGHU17WOE=',
+      'Application': '*/*' ,
+      'User-Agent': '*'
+    }
+  });
+
+const data = await response.json();
+console.log(data);
+    
+  
+
   return {
     props: { mangasStores: mangasStoresData }
   }
@@ -45,7 +72,7 @@ export default function Home(props) {
 			<>
 				<h2 className={styles.heading2}>Los Angeles Stores</h2>
 				<div className={styles.cardLayout}>
-				{ props.mangasStores.map(mangaStore => {
+				{ props.mangasStores.map(mangaStore  => {
 					return (
 						<Card 
 							name= {mangaStore.name}
