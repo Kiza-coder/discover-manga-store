@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css';
 import Banner from '../components/Banner.js';
 import Image from 'next/image';
 import Card from '../components/Card.js';
+import axios from 'axios';
 
 import mangasStoresData from '../data/manga-store.json';
 
@@ -20,31 +21,26 @@ import mangasStoresData from '../data/manga-store.json';
 
 export async function getStaticProps(context) {
 
-  var url = 'https://api.foursquare.com/v3/places/nearby?ll=41.8781,-87.6298&v=20221705';
-const response = await fetch(url,
-  {
-    headers: {
-      'Authorization': 'fsq3ZyXQSZtW1K2RLZinfP5+vzDtOqxvgkrMuCJGHU17WOE=',
-      'Application': '*/*' ,
-      'User-Agent': '*'
-    }
-  });
-
-const data = await response.json();
-console.log(data);
-    
   
+   
+
 
   return {
     props: { mangasStores: mangasStoresData }
   }
 }
 
+
+
+  
+
 export default function Home(props) {
 
   const handleOnButtonClick = (event) => {
     console.log(event)
   };
+
+ 
 
   return (
     <div className={styles.container}>

@@ -4,10 +4,13 @@ import mangasStoresData from '../../data/manga-store.json';
 import Head from 'next/head';
 import styles from '../../styles/manga-store.module.css'
 import Image from 'next/image';
+import cls from "classnames";
 
 
 export function getStaticProps(staticProps){
     const params =  staticProps.params;
+
+    
     
     return {
         props: {
@@ -16,6 +19,8 @@ export function getStaticProps(staticProps){
         })
     }}
 }
+
+
 
 export function getStaticPaths() {
     const paths = mangasStoresData.map(mangaStore => {
@@ -34,10 +39,15 @@ export function getStaticPaths() {
 
 const MangaStore = ({ mangaStore }) => {
     const router = useRouter();
-    const {id, name, imgUrl, address} = mangaStore; 
+    const {name, imgUrl, address, neighbourhood} = mangaStore; 
 
     if (router.isFallback) {
         return <div>Loading ......</div>;
+    }
+
+    const handleUpVoteButton = (event) => {
+        console.log(event);
+        console.log("Iam handleUpVoteButton");
     }
 
     return(
@@ -57,9 +67,23 @@ const MangaStore = ({ mangaStore }) => {
                 </div>
                 <Image src={imgUrl} width={600} height={360} className={styles.storeImg} alt={name}/>
             </div>
-            <div className={cls("glass",styles.col2)}>     
-                <p>{imgUrl}</p>              
-                <p>{address}</p>   
+            <div className={cls("glass",styles.col2)}>
+
+                <div className='iconWrapper'>
+                    <Image src="/static/icones/places.svg" height="24" width="24" />  
+                    <p className={styles.text}>{address}</p>
+                </div>
+
+                <div className='iconWrapper'>
+                    <Image src="/static/icones/nearMe.svg" height="24" width="24" />  
+                    <p className={styles.text}>{neighbourhood}</p>
+                </div>   
+
+                <div className='iconWrapper'>
+                    <Image src="/static/icones/star.svg" height="24" width="24" />  
+                    <p className={styles.text} >10</p>
+                </div>
+                <button className={styles.upvoteButton} onClick={handleUpVoteButton}> Up Vote </button>                       
             </div> 
         </div>     
     </div>);   
