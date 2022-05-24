@@ -3,7 +3,7 @@ import styles from '../styles/Home.module.css';
 import Banner from '../components/Banner.js';
 import Image from 'next/image';
 import Card from '../components/Card.js';
-import axios from 'axios';
+
 
 import mangasStoresData from '../data/manga-store.json';
 
@@ -21,9 +21,10 @@ import mangasStoresData from '../data/manga-store.json';
 
 export async function getStaticProps(context) {
 
-  
+    fetch("https://foursquare.com/oauth2/authenticate?client_id=DLWX22NAM2MHQKJRIE4OML55HJZVAL0VMNTMQZGDCI4LKHSZ&response_type=code&redirect_uri=http://localhost:3000")
+    .then(response => console.log(response))
    
-
+    
 
   return {
     props: { mangasStores: mangasStoresData }
